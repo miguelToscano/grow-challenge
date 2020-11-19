@@ -1,6 +1,6 @@
 {
   "name": "grow-challenge",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Swapi API challenge for grow",
   "main": "index.js",
   "scripts": {
