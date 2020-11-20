@@ -32,7 +32,7 @@ const getPlanets = async () => {
 
     return _.flatten(responses.map((r) => r.data.results));
   } catch (error) {
-    throw utils.createError(502, `${config.get('swapi.getPlanets')} request failed.}`);
+    throw utils.createError(502, `${config.get('swapi.getPlanets')} request failed.`);
   }
 };
 

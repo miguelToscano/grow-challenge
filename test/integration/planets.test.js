@@ -7,15 +7,17 @@ const request = require('supertest');
 const app = require('../../app');
 const mocks = require('../mocks');
 
+const SWAPI_API = 'https://swapi.dev/api';
+
 describe('GET /planets', () => {
 
 
     it('Should return single planet succesfully', async done => {
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/people')
           .reply(200, mocks.peopleSinglePageResponse);
 
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/planets')
           .reply(200, mocks.planetsSinglePageResponse);
       
@@ -28,11 +30,11 @@ describe('GET /planets', () => {
     });
 
     it('Should return full page of planets succesfully', async done => {
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/people')
           .reply(200, mocks.peopleFullPageResponse);
 
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/planets')
           .reply(200, mocks.planetsFullPageResponse);
           
@@ -60,16 +62,16 @@ describe('GET /planets', () => {
     });
 
     it('Should return 2 pages of planets succesfully', async done => {
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/people')
           .reply(200, mocks.peopleFullPageResponse);
         
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/planets')
           .reply(200, mocks.planetsFirstPageResponse);  
       
 
-        nock('https://swapi.dev/api')
+        nock(SWAPI_API)
           .get('/planets?page=2')
           .reply(200, mocks.planetsSecondPageResponse);  
       
@@ -93,6 +95,40 @@ describe('GET /planets', () => {
             });
         });
 
+        done();
+    });
+
+    it('Should fail when Swapi external API /people fails', async done => {
+
+        nock(SWAPI_API)
+        .get('/people')
+        .reply(404);
+
+        nock(SWAPI_API)
+          .get('/planets')
+          .reply(200, mocks.planetsFirstPageResponse);  
+
+        const response = await request(app).get('/planets');
+
+        expect(response.status).toBe(502);
+        expect(response.body.message).toBe('https://swapi.dev/api/people request failed.');
+        done();
+    });
+
+    it('Should fail when Swapi external API /planets fails', async done => {
+
+        nock(SWAPI_API)
+        .get('/planets')
+        .reply(404);
+
+        nock(SWAPI_API)
+          .get('/people')
+          .reply(200, mocks.peopleFullPageResponse);
+        
+        const response = await request(app).get('/planets');
+
+        expect(response.status).toBe(502);
+        expect(response.body.message).toBe('https://swapi.dev/api/planets request failed.');
         done();
     });
 });
