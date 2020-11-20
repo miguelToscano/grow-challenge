@@ -25,6 +25,7 @@
     "@tf/express-error-middleware": "^2.0.0",
     "@tf/headers-traceability": "^1.1.1",
     "@wjsc/hold-on": "^1.0.5",
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "clean-deep": "^3.3.0",
     "compression": "^1.7.4",

@@ -6,5 +6,8 @@
     "requestTiemout": 10000,
     "bodySizeLimit": 10000000,
     "parameterLimit":10000
+  },
+  "swapi": {
+    "people": "https://swapi.dev/api/people"
   }
 }
