@@ -32,7 +32,7 @@ const getPeople = async () => {
 
     return _.flatten(responses.map((r) => r.data.results));
   } catch (error) {
-    throw utils.createError(502, 'Swapi API request failed');
+    throw utils.createError(502, `${config.get('swapi.getPeople')} request failed.}`);
   }
 };
 
