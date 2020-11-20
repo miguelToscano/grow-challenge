@@ -1,5 +1,5 @@
-const getHealth = require('./getHealth')
+const getHealth = require('./getHealth');
 
 module.exports = {
   getHealth,
-}
+};

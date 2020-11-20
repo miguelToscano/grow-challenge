@@ -4,7 +4,7 @@
   "description": "Swapi API challenge for grow",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive ./test",
+    "test": "jest --runInBand --forceExit --detectOpenHandles",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "coverage": "nyc npm run test",
@@ -14,9 +14,12 @@
   "config": {
     "owner": "Miguel Toscano"
   },
+  "jest": {
+    "testEnvironment": "node"
+    },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.naranja.dev:nx/accounts/accounts-backend.git"
+    "url": "https://github.com/miguelToscano/grow-challenge.git"
   },
   "author": "Miguel Toscano",
   "license": "ISC",
@@ -25,6 +28,7 @@
     "@tf/express-error-middleware": "^2.0.0",
     "@tf/headers-traceability": "^1.1.1",
     "@wjsc/hold-on": "^1.0.5",
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "clean-deep": "^3.3.0",
     "compression": "^1.7.4",
@@ -32,11 +36,15 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-http-context": "^1.2.3",
+    "express-validator": "^6.6.1",
     "helmet": "^4.2.0",
     "http-errors": "^1.7.3",
     "intl": "^1.2.5",
+    "jest": "^26.6.3",
+    "joi": "^17.3.0",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.0",
+    "supertest": "^6.0.1",
     "uuid": "^8.3.0",
     "winston": "^3.2.1"
   },

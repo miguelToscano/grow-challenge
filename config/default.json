@@ -6,5 +6,9 @@
     "requestTiemout": 10000,
     "bodySizeLimit": 10000000,
     "parameterLimit":10000
+  },
+  "swapi": {
+    "getPeople": "https://swapi.dev/api/people",
+    "getPlanets": "https://swapi.dev/api/planets"
   }
 }
