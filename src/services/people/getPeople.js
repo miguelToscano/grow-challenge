@@ -18,8 +18,7 @@ const getPeople = async () => {
 
   const requests = [];
 
-  for (let i = 2; i <= count / SWAPI_PAGE_SIZE + 1; i++) {
-
+  for (let i = 2; i <= count / SWAPI_PAGE_SIZE + 1; i += 1) {
     options.params = { page: i };
 
     requests.push(request(options));
@@ -29,7 +28,7 @@ const getPeople = async () => {
 
   responses.unshift(response);
 
-  return _.flatten(responses.map(response => response.data.results));
+  return _.flatten(responses.map((r) => r.data.results));
 };
 
 module.exports = getPeople;

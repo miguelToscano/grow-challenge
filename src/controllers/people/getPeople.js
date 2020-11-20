@@ -7,9 +7,7 @@ const getPeople = async (req, res, next) => {
 
     const people = await peopleInteractor.getPeople(req.query.sortBy);
 
-    const response = peopleSerializer.formatPeople(people);
-
-    res.status(200).send(response);
+    res.status(200).send(people);
 
   } catch (error) {
 

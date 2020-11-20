@@ -5,9 +5,7 @@ const getPeople = async (sortBy) => {
 
   const people = await peopleService.getPeople();
 
-  utils.sortPeopleBy(people, sortBy);
-
-  return people;
+  return utils.sortPeopleBy(people, sortBy);
 };
 
 module.exports = getPeople;
