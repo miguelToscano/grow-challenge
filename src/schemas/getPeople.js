@@ -20,7 +20,7 @@ const getPeopleSchema = {
     },
     custom: {
       options: (value) => ORDERS.includes(value),
-      errorMessage: 'Invalid order',
+      errorMessage: 'Invalid order param',
     },
     optional: true,
   },
