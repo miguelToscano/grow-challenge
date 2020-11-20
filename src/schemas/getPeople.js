@@ -1,4 +1,4 @@
-const SORT_BY_PARAMS = ['name', 'height', 'name'];
+const SORT_BY_PARAMS = ['name', 'height', 'mass'];
 const ORDERS = ['asc', 'desc'];
 
 const getPeopleSchema = {
