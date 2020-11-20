@@ -9,5 +9,6 @@ Promise.resolve()
     console.log(`Listening on port: ${port}`);
   })
   .catch((error) => {
+    console.log(error);
     process.exit(1);
   });

@@ -6,7 +6,6 @@ const nock = require('nock');
 const request = require('supertest');
 const app = require('../../app');
 const mocks = require('../mocks');
-const adapter = require('axios/lib/adapters/http')
 
 describe('GET /planets', () => {
 
