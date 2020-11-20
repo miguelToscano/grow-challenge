@@ -7,11 +7,11 @@ const GET = 'get';
 
 const SWAPI_PAGE_SIZE = 10;
 
-const getPeople = async () => {
+const getPlanets = async () => {
   try {
     const options = {
       method: GET,
-      url: config.get('swapi.getPeople'),
+      url: config.get('swapi.getPlanets'),
     };
 
     const response = await request(options);
@@ -36,4 +36,4 @@ const getPeople = async () => {
   }
 };
 
-module.exports = getPeople;
+module.exports = getPlanets;

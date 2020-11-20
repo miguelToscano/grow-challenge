@@ -8,6 +8,7 @@
     "parameterLimit":10000
   },
   "swapi": {
-    "people": "https://swapi.dev/api/people"
+    "getPeople": "https://swapi.dev/api/people",
+    "getPlanets": "https://swapi.dev/api/planets"
   }
 }

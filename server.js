@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const config = require('config');
+const middlewares = require('./src/middlewares');
 
 const routes = require('./src/routes');
 
@@ -28,6 +29,8 @@ app.use(bodyParser.json(bodyParserJsonConfig()));
 app.use(bodyParser.urlencoded(bodyParserUrlencodedConfig()));
 
 routes.bind(app);
+
+app.use(middlewares.handleError);
 
 const port = config.get('api.port') || 3000;
 
