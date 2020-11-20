@@ -1,15 +1,35 @@
 const request = require('axios');
 const config = require('config');
+const _ = require('lodash');
 
 const GET = 'get';
 
-const getPeople = (page) => {
+const SWAPI_PAGE_SIZE = 10;
+
+const getPeople = async () => {
   const options = {
     method: GET,
-    params: { page },
     url: config.get('swapi.people'),
   };
-  return request(options).then(response => response.data);
+
+  const response = await request(options);
+
+  const { count } = response.data;
+
+  const requests = [];
+
+  for (let i = 2; i <= count / SWAPI_PAGE_SIZE + 1; i++) {
+
+    options.params = { page: i };
+
+    requests.push(request(options));
+  }
+
+  const responses = await Promise.all(requests);
+
+  responses.unshift(response);
+
+  return _.flatten(responses.map(response => response.data.results));
 };
 
 module.exports = getPeople;

@@ -3,7 +3,7 @@ const utils = require('../../utils');
 
 const getPeople = async (sortBy) => {
 
-  const people = await peopleService.getPeople(1);
+  const people = await peopleService.getPeople();
 
   utils.sortPeopleBy(people, sortBy);
 
