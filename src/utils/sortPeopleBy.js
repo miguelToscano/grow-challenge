@@ -1,20 +1,12 @@
 const _ = require('lodash');
 
-const validSortParams = ['name', 'height', 'mass'];
+const sortByStringParam = (people, param, order = 'asc') => {
+  const array = people.map((person) => ({ ...person }));
 
-const sortByStringParam = (people, param) => {
-  const array = people.map((person) => {
-    const object = {
-      ...person,
-    };
-
-    return object;
-  });
-
-  return _.sortBy(array, [param]);
+  return _.orderBy(array, [param], [order]);
 };
 
-const sortByNumericParam = (people, param) => {
+const sortByNumericParam = (people, param, order = 'asc') => {
   const array = people.map((person) => {
     const object = {
       ...person,
@@ -26,7 +18,7 @@ const sortByNumericParam = (people, param) => {
     return object;
   });
 
-  return _.sortBy(array, [param]);
+  return _.orderBy(array, [param], [order]);
 };
 
 const sortByParamMapper = {
@@ -35,6 +27,6 @@ const sortByParamMapper = {
   mass: sortByNumericParam,
 };
 
-const sortPeopleBy = (people, param) => (param && validSortParams.includes(param) && Object.keys(sortByParamMapper).includes(param) ? sortByParamMapper[param](people, param) : people);
+const sortPeopleBy = (people, param, order) => (Object.keys(sortByParamMapper).includes(param) ? sortByParamMapper[param](people, param, order) : people);
 
 module.exports = sortPeopleBy;
