@@ -3,9 +3,15 @@ const _ = require('lodash');
 const validSortParams = ['name', 'height', 'mass'];
 
 const sortByStringParam = (people, param) => {
-  people = _.sortBy(people, [param]);
+  const array = people.map((person) => {
+    const object = {
+      ...person,
+    };
 
-  return people;
+    return object;
+  });
+
+  return _.sortBy(array, [param]);
 };
 
 const sortByNumericParam = (people, param) => {
