@@ -7,7 +7,7 @@
     "test": "jest --runInBand --forceExit --detectOpenHandles",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "coverage": "nyc npm run test",
+    "cover": "npm run test -- --coverage",
     "lint": "eslint .",
     "lint-fix": "eslint --fix ."
   },
